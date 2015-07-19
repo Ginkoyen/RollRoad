@@ -7,4 +7,5 @@ app.on('ready', function(){
     height:600
   })
   mainWindow.loadUrl("file://" + __dirname + "/index.html")
+  console.log("I`m ready")
 })
