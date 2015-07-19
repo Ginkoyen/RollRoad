@@ -1,7 +1,15 @@
 <html>
   <title>RollingRoar</title>
   <script src="game.js"> </script>
+  <link rel ="stylesheet" href ="game.css">
   <body>
+  <script>
+    var simpleLevel = new Level(map_1);
+    var display = new DOMDisplay(document.body, simpleLevel);
 
+    console.log(simpleLevel.width);
+    console.log(simpleLevel.height);
+
+  </script>
   </body>
 </html>
