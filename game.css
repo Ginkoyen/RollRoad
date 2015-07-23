@@ -1,20 +1,20 @@
-. game {
-  overflow : hidden ;
-  max - width : 600 px ;
-  max - height : 450 px ;
-  position : relative ;
+.game {
+  overflow: hidden ;
+  max-width: 960px ;
+  max-height: 960px ;
+  position: relative ;
 }
-. background    {
-    background : rgb (52 , 166 , 251);
-    table - layout : fixed;
-    border - spacing : 0;
+.background    {
+    background: rgb(52 , 166 , 251);
+    table-layout: fixed;
+    border-spacing: 0;
 }
-. background td { padding : 0;}
-. wall          { background : black;}
-. road          { background : white;}
-. actor         { position : absolute ;}
-. player        { background : rgb (64 , 64 , 64) ;}
-. lost . player { background : rgb (160 , 64 , 64) ;}
-. won . player  {
-    box - shadow : -4 px -7 px 8 px white , 4 px -7 px 8 px white ;
+.background td { padding: 0;}
+.wall          { background: black;}
+.road          { background: grey;}
+.actor         { position: absolute ;}
+.player        { background: rgb(164 , 10 , 10) ;}
+.lost .player { background: rgb(160 , 64 , 64) ;}
+.won .player  {
+    box-shadow : -4px -7px 8px white , 4px -7px 8px white ;
 }

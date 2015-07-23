@@ -20,7 +20,7 @@ var actorChars = {
   "@": Player
 };
 
-var scale = 64;
+var scale = 32;
 
 /*==================
   DOM Helpers
@@ -119,7 +119,7 @@ Vector.prototype.times = function (factor) {
   Player "class" : a constructor + added prototypes
 ====================*/
 function Player (pos) {
-  this.pos = pos.plus(new Vector(0,-0.5));
+  this.pos = pos.plus(new Vector(0,0));
   this.size = new Vector (1,1);
   this.speed = new Vector (0,0);
 }
@@ -145,7 +145,7 @@ function Level (plan) {
         this.actors.push(new Actor(new Vector(x,y), ch));
       else if (ch == '#')
         fieldType = "wall";
-      else if (ch == " ");
+      else if (ch == ' ')
         fieldType = "road";
       gridLine.push(fieldType);
     }
