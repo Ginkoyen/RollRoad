@@ -1,4 +1,19 @@
 /*==================
+   ROAD ROAR
+--------------------
+TODO :
+    function obstacleAt :
+     On nomme a le point du centre du cube (actor)
+     On nomme m les cubes (mur)
+     - Si a est aligne avec m dans le sens de la
+     direction selectionne alors on ne change pas la direction
+     - Si a n est pas aligne avec m on boucle pour
+     valide un alignement parfait sur la grille, lorsque l'alignement
+     est valide on change la position
+
+====================*/
+
+/*==================
   Globals
 ====================*/
 
