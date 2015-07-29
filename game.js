@@ -197,41 +197,57 @@ Vector.prototype.times = function (factor) {
 function Player (pos) {
   this.pos = pos.plus(new Vector(0,0));
   this.size = new Vector (1,1);
-  this.speed = new Vector (0,0);
+  this.speed = new Vector (5,5);
   this.direction = new Vector (0,0);
 }
 
 Player.prototype.type = "player";
 Player.prototype.move = function (step, level, keys){
+var new_direction = new Vector (this.direction.x,this.direction.y);
 if(keys.left)
 {
-  this.direction.x = -1;
-  this.direction.y = 0;
+  new_direction.x = -1;
+  new_direction.y = 0;
 }
 if (keys.right)
 {
-  this.direction.x = 1;
-  this.direction.y = 0;
+  new_direction.x = 1;
+  new_direction.y = 0;
 }
 if (keys.up)
 {
-  this.direction.x = 0;
-  this.direction.y = -1;
+  new_direction.x = 0;
+  new_direction.y = -1;
 }
 if (keys.down)
 {
-  this.direction.x = 0;
-  this.direction.y = 1;
+  new_direction.x = 0;
+  new_direction.y = 1;
 }
 
-var motion = new Vector (this.speed.x * this.direction.x * step,
-  this.speed.y * this.direction.y * step);
+var motion = new Vector (this.speed.x * new_direction.x * step,
+  this.speed.y * new_direction.y * step);
 var newPos = this.pos.plus(motion);
 var obstacle = level.obstacleAt(newPos, this.size);
 if (obstacle)
+{
   level.playerTouched(obstacle);
-else
- this.pos = newPos;
+  motion.x = this.speed.x * this.direction.x * step;
+  motion.y = this.speed.y * this.direction.y * step;
+  newPos = this.pos.plus(motion);
+  obstacle = level.obstacleAt(newPos, this.size);
+  if (obstacle)
+    level.playerTouched(obstacle);
+  else
+    this.pos = newPos;
+ }
+ else
+ {
+   this.direction.x = new_direction.x;
+   this.direction.y = new_direction.y;
+   this.pos = newPos;
+ }
+
 };
 
 Player.prototype.act = function (step, level, keys) {
@@ -324,7 +340,7 @@ Level.prototype.animate = function(step, keys) {
 Level.prototype.playerTouched = function(type, actor) {
   if (type == "wall" && this.status == null)
   {
-    this.status = "lost";
+    //this.status = "lost";
     this.finishDelay = 1;
   }
 }
